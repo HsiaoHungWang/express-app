@@ -59,8 +59,15 @@
                       {"name":"Jack","workYears":5,"salary":40000},
                       {"name":"Mary","workYears":7,"salary":45000}
                    ]};
-
-
+                   const {employees} = emp;
+                   console.log(employees)
+      //練習：請將emp中的資料讀出
+      employees.forEach(emp=>{
+        const{name, workYears, salary} = emp;
+           console.log(name);
+        console.log(workYears);
+        console.log(salary);
+      })
     </script>
   </body>
 </html>
