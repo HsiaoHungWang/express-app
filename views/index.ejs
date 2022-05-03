@@ -16,18 +16,50 @@
         <address><streetaddress>21 2nd Street</streetaddress><city>New York</city><state>NY</state><postalcode>10021</postalcode></address>
       </person>
       `;
-      //XML資料的讀取 => DOM
-      const parser = new DOMParser();
-      //XML string 轉成 XML DOM物件
-      const xml = parser.parseFromString(docXML,"text/xml");
-      console.log(xml.getElementsByTagName("firstname")[0].nodeName);
-      console.log(xml.getElementsByTagName("firstname")[0].firstChild.nodeValue);
-      const adds = xml.getElementsByTagName("address")[0];
-      //console.log(adds.childNodes.length)
-      for(let i=0,max=adds.childNodes.length;i<max;i++){
-        console.log(adds.childNodes[i].firstChild.nodeValue);
-      }
+      // //XML資料的讀取 => DOM
+      // const parser = new DOMParser();
+      // //XML string 轉成 XML DOM物件
+      // const xml = parser.parseFromString(docXML,"text/xml");
+      // console.log(xml.getElementsByTagName("firstname")[0].nodeName);
+      // console.log(xml.getElementsByTagName("firstname")[0].firstChild.nodeValue);
+      // const adds = xml.getElementsByTagName("address")[0];
+      // //console.log(adds.childNodes.length)
+      // for(let i=0,max=adds.childNodes.length;i<max;i++){
+      //   console.log(adds.childNodes[i].firstChild.nodeValue);
+      // }
     
+      const emps = [{"name":"Tom","workYears":3,"salary":35000},
+                     {"name":"Jack","workYears":5,"salary":40000},
+                     {"name":"Mary","workYears":7,"salary":45000}];
+      //JSON資料的讀取
+      //[] => 透過index索引值來讀資料
+      //{} => {}.屬性的方式來讀資料
+      //emps=[] => array
+      // console.log(emps[1]); // {"name":"Jack","workYears":5,"salary":40000,key:value}
+      // //emps[1] = {} => object
+      // console.log(emps[1].name);  //Jack
+      // console.log(emps[1].workYears);  //5
+      // console.log(emps[1]["salary"]);  //5
+
+      // for(let i=0,max=emps.length;i<max;i++){
+      //   console.log(emps[i].name)
+      //    console.log(emps[i].workYears); 
+      // console.log(emps[i]["salary"]);  
+      // }
+
+      // emps.forEach(emp=>{
+      //   console.log(emp)
+      //   console.log(emp.name);
+      //   console.log(emp["workYears"]);
+      //   console.log(emp.salary);
+      // })
+
+      const emp = {"employees":[
+                      {"name":"Tom","workYears":3,"salary":35000},
+                      {"name":"Jack","workYears":5,"salary":40000},
+                      {"name":"Mary","workYears":7,"salary":45000}
+                   ]};
+
 
     </script>
   </body>
