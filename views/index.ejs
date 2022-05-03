@@ -7,5 +7,28 @@
   <body>
     <h1><%= title %></h1>
     <p>Welcome to <%= title %></p>
+
+    <script>
+      const docXML = `<person>
+        <firstname>John</firstname>
+        <lastname>Smith</lastname>
+        <age>25</age>
+        <address><streetaddress>21 2nd Street</streetaddress><city>New York</city><state>NY</state><postalcode>10021</postalcode></address>
+      </person>
+      `;
+      //XML資料的讀取 => DOM
+      const parser = new DOMParser();
+      //XML string 轉成 XML DOM物件
+      const xml = parser.parseFromString(docXML,"text/xml");
+      console.log(xml.getElementsByTagName("firstname")[0].nodeName);
+      console.log(xml.getElementsByTagName("firstname")[0].firstChild.nodeValue);
+      const adds = xml.getElementsByTagName("address")[0];
+      //console.log(adds.childNodes.length)
+      for(let i=0,max=adds.childNodes.length;i<max;i++){
+        console.log(adds.childNodes[i].firstChild.nodeValue);
+      }
+    
+
+    </script>
   </body>
 </html>
