@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+   <button id="button1">Ajax</button>
+   <div id="div1">顯示結果</div>
+    <script>
+      //找到要控制的對象  querySelector('css selectors')
+      const btnAsync = document.querySelector('#button1');
+      const divMessage = document.querySelector('#div1');
+      //使用者按下按鈕在div上顯示文字
+      //使用者按下按鈕這個動作(event)，在程式中叫做 clcik 
+      btnAsync.addEventListener('click',()=>{
+        //步驟一 先建立Ajax物件
+        const xhr = new XMLHttpRequest();           
+            //load事件表示資料已經回傳到瀏覽器
+            xhr.addEventListener('load',()=>{
+                 //步驟三 接收結果
+                const data = xhr.responseText;
+
+                //步驟四 讀資料，顯示資料
+                //顯示文字
+                divMessage.innerHTML = `<h2>${data}</h2>`;
+            })     
+        //步驟二 對伺服器發出要求
+        //open("http method","要呼叫的伺服器端程式")
+        xhr.open("GET","/users"); //打開瀏覽器輸入網址
+        xhr.send(); //輸入網只後，按下Enter鍵，才會發出要求(Request)
+
+    
+
+
+
+        
+      })
+    </script>
+  </body>
+</html>
