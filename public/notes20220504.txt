@@ -1,0 +1,18 @@
+XML、JSON => 資料讀取=>顯示在網頁上
+HTTP
+
+XMLHttpRequest API  >  XMLHttpRequest advanced features > Fetch
+
+XMLHTTP
+
+Ajax
+呼叫一個伺服器端的程式，會回傳Hello Ajax，收到了Hello Ajax，顯示在網頁上
+
+Server端程式
+ 1.回傳 Hello Ajax
+ 2.測試是否OK
+
+Client端程式
+ 1.呼叫Server?
+ 2.接收結果
+ 3.將結果顯示在網頁上
