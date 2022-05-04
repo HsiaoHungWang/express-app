@@ -5,12 +5,15 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
+    <input type="text" id="inputName" placeholder="請輸入姓名" >
    <button id="button1">Ajax</button>
    <div id="div1">顯示結果</div>
     <script>
       //找到要控制的對象  querySelector('css selectors')
       const btnAsync = document.querySelector('#button1');
       const divMessage = document.querySelector('#div1');
+      const txtName = document.querySelector('#inputName');
+      
       //使用者按下按鈕在div上顯示文字
       //使用者按下按鈕這個動作(event)，在程式中叫做 clcik 
       btnAsync.addEventListener('click',()=>{
@@ -27,7 +30,7 @@
             })     
         //步驟二 對伺服器發出要求
         //open("http method","要呼叫的伺服器端程式")
-        xhr.open("GET","/users"); //打開瀏覽器輸入網址
+        xhr.open("GET",`/users?name=${txtName.value}`); //打開瀏覽器輸入網址
         xhr.send(); //輸入網只後，按下Enter鍵，才會發出要求(Request)
 
     
