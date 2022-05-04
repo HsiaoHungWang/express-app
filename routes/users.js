@@ -6,7 +6,10 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   //接收Ajax透過GET傳過來的資料
   const name = req.query.name ? req.query.name : "Ajax";
-  res.send(`Hello ${name}!!`);
+  setTimeout(()=>{
+    res.send(`Hello ${name}!!`);
+  },5000)
+  
 });
 
 

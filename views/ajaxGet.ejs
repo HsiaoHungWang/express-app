@@ -21,6 +21,7 @@
         const xhr = new XMLHttpRequest();           
             //load事件表示資料已經回傳到瀏覽器
             xhr.addEventListener('load',()=>{
+              console.log('load');
                  //步驟三 接收伺服器回傳的資料
                 const data = xhr.responseText;
 
@@ -28,9 +29,23 @@
                 //顯示文字
                 divMessage.innerHTML = `<h2>${data}</h2>`;
             })     
+            //ajax開始會觸發loadstart事件
+            xhr.addEventListener('loadstart',()=>{
+              console.log("loadstart");
+            })
+             //ajax結束會觸發loadend事件
+            xhr.addEventListener('loadend',()=>{
+              console.log("loadend");
+            })
+
+            xhr.addEventListener('timeout',()=>{
+              console.log('timeout')
+              divMessage.innerHTML = `<h2>伺服器忙碌中，請稍後再來</h2>`;
+            })
         //步驟二 對伺服器發出要求
         //open("http method","要呼叫的伺服器端程式")
         xhr.open("GET",`/users?name=${txtName.value}`); //打開瀏覽器輸入網址
+        xhr.timeout = 3000;  //伺服器在3秒鐘內沒有回傳結果，我們就終止程式的執行
         xhr.send(); //輸入網只後，按下Enter鍵，才會發出要求(Request)
 
     
