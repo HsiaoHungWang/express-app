@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+ 
+    <script>
+       const doSomething = function(task,timer,err,cb){
+         setTimeout(()=>{
+           const dt = new Date();
+           cb(null, `${task}完成 @${dt.toISOString()}`)
+         },timer)
+       }
+
+       const dt = new Date();
+       console.log(`開始工作時間@${dt.toISOString()}`)
+       doSomething("換圖片", 5000, false, function(error,data){
+         if(error){
+           console.log("有錯：", error);
+           return;
+         }
+         console.log(data);
+         doSomething("解決Route錯誤", 5000, false, function(error,data){
+         if(error){
+           console.log("有錯：", error);
+           return;
+         }
+         console.log(data);
+         doSomething("Push到GitHub", 5000, false, function(error,data){
+         if(error){
+           console.log("有錯：", error);
+           return;
+         }
+         console.log(data);
+       })
+       })
+       })
+
+     
+    </script>
+  </body>
+</html>

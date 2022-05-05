@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+   <h3>Promise Demo</h3>
+    <script>
+      //建立Promise物件
+      const promise = new Promise((resolve,reject)=>{
+          //非同步程式
+        const num = Math.random() > 0.5 ? 1 : 0;
+        console.log(num);
+
+
+        if(num){
+          resolve("成功")
+        }else{
+          reject("失敗")
+        }
+
+      })
+  //使用 Promise
+  promise
+      .then((result)=>{
+        console.log(result)
+      })
+      .catch(error=>{
+        console.log(error)
+      })
+      .finally(()=>{
+        console.log("end")
+      })
+     
+
+      setTimeout(function () {
+        console.log('A');
+        setTimeout(function () {
+                  console.log('B');
+                  setTimeout(function () {
+                        console.log('C');
+                   }, 1000);
+         }, 1000);
+}, 1000);
+
+    </script>
+  </body>
+</html>

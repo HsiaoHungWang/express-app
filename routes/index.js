@@ -16,4 +16,11 @@ router.get('/customers',(req,res)=>{
 res.render('customer',{title:'連動式下拉選單'})
 })
 
+router.get('/callback',(req,res,next)=>{
+  res.render('callback');
+})
+router.get('/promise',(req,res,next)=>{
+  res.render('promise');
+})
+
 module.exports = router;
