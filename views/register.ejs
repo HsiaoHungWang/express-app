@@ -35,19 +35,30 @@
        const divMessage = document.querySelector('#div1');
        btnSubmt.addEventListener('click',(evt)=>{
          evt.preventDefault(); //取消原有的行為
-  
-         const xhr = new XMLHttpRequest();
 
-          xhr.addEventListener('load',()=>{
-            const data = xhr.responseText;
-            divMessage.textContent = data;
-          })
+         const formData =  new FormData(document.userInfo);
+         fetch('/users/register',{
+           method:"post",
+           body:formData
+         }).then(response=>{
+           return response.text()
+         }).then(data=>{
+          divMessage.textContent = data;
+         })
+
+  
+        //  const xhr = new XMLHttpRequest();
+
+        //   xhr.addEventListener('load',()=>{
+        //     const data = xhr.responseText;
+        //     divMessage.textContent = data;
+        //   })
 
          //把表單中使用者輸入的資料放到FormData物件中
-         const formData =  new FormData(document.userInfo);
+        //  const formData =  new FormData(document.userInfo);
 
-         xhr.open("POST", document.userInfo.action);
-         xhr.send(formData)
+        //  xhr.open("POST", document.userInfo.action);
+        //  xhr.send(formData)
 
         // console.log('submit')
        })
