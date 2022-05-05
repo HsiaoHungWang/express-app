@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
      cb(null, new Date().getTime() + ext[file.mimetype]);
   }
 })
-const fileFilter = (req,file,cb)=>{
+const fileFilter = (req,file,cb)=>{ 
   cb(null, !!ext[file.mimetype]);
 }
 const upload = multer({storage, fileFilter});
