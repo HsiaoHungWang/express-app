@@ -7,8 +7,11 @@
   <body>
    <h3><%= title%></h3>
    <select id="select1"></select>
+   <select id="select2"></select>
     <script>
       const selCountry = document.querySelector('#select1');
+      const selCity = document.querySelector('#select2');
+      //================================================
        const xhr = new XMLHttpRequest();
        xhr.addEventListener('load',()=>{
         //  console.log(xhr.responseText.length);
@@ -26,7 +29,23 @@
        })
        xhr.open("GET","/customers/country");
        xhr.send();
+       //===================================================
        
+
+       const xhr1 = new XMLHttpRequest();
+       xhr1.addEventListener('load',()=>{
+        const datas = JSON.parse(xhr1.responseText);
+        //讀資料
+        datas.forEach(item=>{
+          const {city} = item;
+           //顯示資料
+           const opt = new Option(city,city);
+           selCity.options.add(opt);
+        })
+       
+       })
+       xhr1.open("GET",`/customers/city?country=USA`);
+       xhr1.send();
      
     </script>
   </body>
