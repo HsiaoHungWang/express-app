@@ -12,6 +12,11 @@ router.get('/', function(req, res, next) {
   
 });
 
+//http://localhost:3000/users/register
+router.get('/register',(req,res)=>{
+  res.render('register',{ title: 'Ajax POST Demo' })
+})
+
 
 
 
