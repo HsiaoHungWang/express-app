@@ -11,28 +11,12 @@
     <script>
       const selCountry = document.querySelector('#select1');
       const selCity = document.querySelector('#select2');
-      //================================================
-       const xhr = new XMLHttpRequest();
-       xhr.addEventListener('load',()=>{
-        //  console.log(xhr.responseText.length);
-        //  console.log(JSON.parse(xhr.responseText).length);
-        //將JSON字串轉成JSON物件
-        const datas = JSON.parse(xhr.responseText);
-        //讀資料
-        datas.forEach(item=>{
-          const {country} = item;
-           //顯示資料
-           const opt = new Option(country,country);
-           selCountry.options.add(opt);
-        })
-       
-       })
-       xhr.open("GET","/customers/country");
-       xhr.send();
-       //===================================================
-       
 
-       const xhr1 = new XMLHttpRequest();
+      selCountry.addEventListener('change',()=>{
+       // console.log(selCountry.options[selCountry.selectedIndex].value);
+       //先清除select標籤中的資料
+       selCity.length = 0;
+        const xhr1 = new XMLHttpRequest();
        xhr1.addEventListener('load',()=>{
         const datas = JSON.parse(xhr1.responseText);
         //讀資料
@@ -44,8 +28,56 @@
         })
        
        })
-       xhr1.open("GET",`/customers/city?country=USA`);
+      const country =  selCountry.options[selCountry.selectedIndex].value;
+      
+       xhr1.open("GET",`/customers/city?country=${country}`);
        xhr1.send();
+
+
+      })
+      //================================================
+       const xhr = new XMLHttpRequest();
+       xhr.addEventListener('load',()=>{
+        
+        //  console.log(xhr.responseText.length);
+        //  console.log(JSON.parse(xhr.responseText).length);
+        //將JSON字串轉成JSON物件
+        const datas = JSON.parse(xhr.responseText);
+        //讀資料
+        datas.forEach(item=>{
+          const {country} = item;
+           //顯示資料
+           const opt = new Option(country,country);
+           selCountry.options.add(opt);
+        })
+
+        //根據國家去帶出城市=====================
+        const xhr1 = new XMLHttpRequest();
+       xhr1.addEventListener('load',()=>{
+        const datas = JSON.parse(xhr1.responseText);
+        //讀資料
+        datas.forEach(item=>{
+          const {city} = item;
+           //顯示資料
+           const opt = new Option(city,city);
+           selCity.options.add(opt);
+        })
+       
+       })
+      const country =  selCountry.options[selCountry.selectedIndex].value;
+      
+       xhr1.open("GET",`/customers/city?country=${country}`);
+       xhr1.send();
+       // console.log(selCountry.options[selCountry.selectedIndex].value);
+       
+        //========================================
+       })
+       xhr.open("GET","/customers/country");
+       xhr.send();
+       
+       //===================================================      
+     
+      
      
     </script>
   </body>
