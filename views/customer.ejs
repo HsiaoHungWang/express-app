@@ -6,13 +6,28 @@
   </head>
   <body>
    <h3><%= title%></h3>
-   <select>
-     <option value="1">aaaaa</option>
-     <option value="2">bbbbb</option>
-     <option value="3">ccccc</option>
-   </select>
+   <select id="select1"></select>
     <script>
-      
+      const selCountry = document.querySelector('#select1');
+       const xhr = new XMLHttpRequest();
+       xhr.addEventListener('load',()=>{
+        //  console.log(xhr.responseText.length);
+        //  console.log(JSON.parse(xhr.responseText).length);
+        //將JSON字串轉成JSON物件
+        const datas = JSON.parse(xhr.responseText);
+        //讀資料
+        datas.forEach(item=>{
+          const {country} = item;
+           //顯示資料
+           const opt = new Option(country,country);
+           selCountry.options.add(opt);
+        })
+       
+       })
+       xhr.open("GET","/customers/country");
+       xhr.send();
+       
+     
     </script>
   </body>
 </html>
