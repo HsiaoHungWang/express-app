@@ -1,7 +1,10 @@
 var express = require('express');
 const multer = require('multer');
 var router = express.Router();
+require('dotenv').config();
 
+console.log(process.env.MYSQL_DB);
+console.log(process.env.MYSQL_HOST);
 //沒有上傳檔案的multe設定
 //const upload = multer();
 
