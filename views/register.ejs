@@ -21,10 +21,32 @@
         <input type="checkbox" class="form-check-input" id="exampleCheck1">
         <label class="form-check-label" for="exampleCheck1">Check me out</label>
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" class="btn btn-primary" id="button1">Submit</button>
+
+<div id="div1"></div>
+      
     </form>
     <script>
-     
+       const btnSubmt = document.querySelector('#button1');
+       const divMessage = document.querySelector('#div1');
+       btnSubmt.addEventListener('click',(evt)=>{
+         evt.preventDefault(); //取消原有的行為
+  
+         const xhr = new XMLHttpRequest();
+
+          xhr.addEventListener('load',()=>{
+            const data = xhr.responseText;
+            divMessage.textContent = data;
+          })
+
+         //把表單中使用者輸入的資料放到FormData物件中
+         const formData =  new FormData(document.userInfo);
+
+         xhr.open("POST", document.userInfo.action);
+         xhr.send(formData)
+
+        // console.log('submit')
+       })
     </script>
   </body>
 </html>
