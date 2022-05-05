@@ -1,0 +1,22 @@
+XMLHttpRequest
+
+對伺服器端的程式發出要求Request
+  HTTP
+     GET    http://.......?id=1  http://...../1
+     POST   http://.....   http 封包 header、body
+
+接收伺服器回傳的結果(資料)
+  load事件 =>  responseText
+
+//step1
+const xhr = new XMLHttpRequest();
+//step2
+xhr.open("GET","/api/customer?name=Jack")
+xhr.send()
+//step3
+xhr.addEventListener('load',()=>{
+//接收資料
+const data = xhr.responseText
+})
+
+php + apache = nodeJS express(ejs)
