@@ -19,8 +19,14 @@ res.render('customer',{title:'連動式下拉選單'})
 router.get('/callback',(req,res,next)=>{
   res.render('callback');
 })
+//http://localhost:3000/promies
 router.get('/promise',(req,res,next)=>{
   res.render('promise');
+})
+
+//http://localhost:3000/fetch
+router.get('/fetch',(req,res,next)=>{
+  res.render('fetch');
 })
 
 module.exports = router;

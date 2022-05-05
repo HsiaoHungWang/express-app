@@ -32,9 +32,9 @@ const upload = multer({storage, fileFilter});
 router.get('/', function(req, res, next) {
   //接收Ajax透過GET傳過來的資料
   const name = req.query.name ? req.query.name : "Ajax";
-  setTimeout(()=>{
+  //setTimeout(()=>{
     res.send(`Hello ${name}!!`);
-  },5000)
+  //},5000)
   
 });
 
